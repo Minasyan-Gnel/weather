@@ -1,0 +1,9 @@
+.country-wrapper {
+    list-style-type: none;
+    text-align: center;
+}
+.country-wrapper > li {
+    display: inline-block;
+    width: 47%;
+    margin: 0 1vw;
+}
