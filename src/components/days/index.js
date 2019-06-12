@@ -13,14 +13,15 @@ export const setDays = (props) => {
         }
     );
     data.daily && data.daily.data.forEach(item => {
+        const clickHandler = async () => {
+                const params = await weatherDataService.getDataByDay({time: item.time});
+                Router.navigatePage("/dayHours", params)();
+        };
         const day = createNodeElement(
             {
                 tagName: "LI",
                 classes: ["day-bx"],
-                clickHandler: async () => {
-                    const params = await weatherDataService.getDataByDay({time: item.time});
-                    Router.navigatePage("/dayHours", params)();
-                }
+                clickHandler
             }
         );
         const precipType = createNodeElement(

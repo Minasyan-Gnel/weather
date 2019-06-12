@@ -16,28 +16,16 @@ describe("Days", () => {
             temperatureHigh: 56.92
         }
     ]}}};
-    it("should run days component", (done) => {
-        document.getElementById = jest.fn(id => Helpers.createNodeElement({tagName: "LI", id}));
+    it("should run days component", () => {
+        document.body.innerHTML = `<ul><li id="country-days-box"></li></ul>`;
         const countryDaysBox = document.getElementById("country-days-box");
-        weatherDataService.getDataByDay = jest.fn(() => Promise.resolve());
-        Router.navigatePage = jest.fn(() => () => {});
-        const day = Helpers.createNodeElement(
-            {
-                tagName: "LI",
-                classes: ["day-bx"],
-                clickHandler: async () => {
-                    const params = await weatherDataService.getDataByDay();
-                    Router.navigatePage("/dayHours", params)();
-                }
-            }
-        );
-        day.click();
-        expect(weatherDataService.getDataByDay).toBeCalled();
-        expect(Router.navigatePage()).toBeFunction;
-        countryDaysBox.appendChild = jest.fn();
-        countryDaysBox.appendChild(day);
-        expect(countryDaysBox.appendChild).toBeCalled();
+        const clickHandler = async () => {
+                weatherDataService.getDataByDay = jest.fn(() => Promise.resolve("resolve"));
+                const params = await weatherDataService.getDataByDay();
+                expect(params).toEqual("resolve");
+                // Router.navigatePage("/dayHours", params)();
+        };
+        clickHandler();
         expect(setDays(props)).toBeUndefined;
-        done();
     });
 });
