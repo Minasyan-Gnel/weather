@@ -11,14 +11,14 @@ class WeatherDataService {
         const url = await this.getUrl();
         const data = await DataFetcher.getData(url);
         DataStores.setData("weatherData", data);
-    }
+    };
 
     getDataByDay = async (params) => {
         const url = await this.getUrl();
         const data = await DataFetcher.getData(url, params);
         DataStores.setData("dayData", data);
         return Promise.resolve(params)
-    }
+    };
 
     getUrl = () => {
         return new Promise(resolve => {
