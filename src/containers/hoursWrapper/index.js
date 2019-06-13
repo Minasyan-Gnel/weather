@@ -5,7 +5,7 @@ const HoursWrapper = () => {
     WeatherDataStore.subscribe("dayData", {
         keys: ["hourly"],
         callback: data => setHours({data})
-    })
+    });
     return `<ul id="hours-wrapper"></ul>`;
 }
 

@@ -10,7 +10,6 @@ const Helpers = {
         params.placeholder && (element.placeholder = params.placeholder);
         params.classes && (params.classes.forEach(elClass => element.classList.add(elClass)));
         params.clickHandler && (element.addEventListener("click", params.clickHandler));
-        params.enterHandler && (element.addEventListener("keypress", params.enterHandler));
         return element;
     }
 };

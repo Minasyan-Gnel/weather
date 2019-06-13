@@ -20,6 +20,7 @@ export const setDays = (props) => {
         const day = createNodeElement(
             {
                 tagName: "LI",
+                id: "day-bx",
                 classes: ["day-bx"],
                 clickHandler
             }

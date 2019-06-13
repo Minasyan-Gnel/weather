@@ -11,7 +11,7 @@ describe("Country Info", () => {
         }
     }};
     it("should run countryInfo component", () => {
-        document.getElementById = jest.fn(id => Helpers.createNodeElement({tagName: "LI", id}));
+        document.body.innerHTML = `<ul><li id="country-info"></li></ul>`;
         const countryInfo = document.getElementById("country-info");
         countryInfo.appendChild = jest.fn();
         expect(setCountryInfoItems(props)).toBeUndefined;

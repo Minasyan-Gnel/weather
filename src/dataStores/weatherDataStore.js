@@ -13,7 +13,7 @@ class WeatherDataStore {
     }
 
     subscribe(topic, item) {
-        if (!(typeof item === 'object' || typeof item === 'function')) return;
+        if (!((typeof item === 'object' && item.constructor !== Array) || typeof item === 'function')) return "Subscibe faild";
         const storeState = DataStore.getState();
         this.events[topic] = this.events[topic] || [];
         this.events[topic].push(item);
