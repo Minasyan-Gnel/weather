@@ -17,7 +17,7 @@ class WeatherDataService {
         const url = await this.getUrl();
         const data = await DataFetcher.getData(url, params);
         DataStores.setData("dayData", data);
-        return Promise.resolve(params)
+        return Promise.resolve(params);
     };
 
     getUrl = () => {
